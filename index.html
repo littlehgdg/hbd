@@ -1,0 +1,115 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff3366;
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    #confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .confetti {
+      width: 10px;
+      height: 10px;
+      background-color: #ffcc00;
+      position: absolute;
+      will-change: transform;
+      transform-origin: 0 0;
+      animation: confetti-fall 5s linear infinite;
+    }
+
+    @keyframes confetti-fall {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    #video-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 50%;
+      border-radius: 10px;
+    }
+  </style>
+  <title>FOR FARAH!</title>
+</head>
+<body>
+  <div class="container">
+    <h1>HBD FARAH!!!</h1>
+    <p>moga sehat selalu dan dilancarkan semua usahanya</p>
+  </div>
+
+  <div id="confetti-container"></div>
+
+  <div id="video-container">
+    <video controls autoplay>
+      <source src="video/video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const confettiContainer = document.getElementById('confetti-container');
+
+      function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confettiContainer.appendChild(confetti);
+
+        confetti.addEventListener('animationend', function () {
+          confetti.remove();
+        });
+      }
+
+      function createConfettiFall() {
+        for (let i = 0; i < 50; i++) {
+          setTimeout(createConfetti, i * 100);
+        }
+      }
+
+      createConfettiFall();
+    });
+  </script>
+</body>
+</html>
